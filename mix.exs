@@ -15,7 +15,7 @@ defmodule DecoderRing.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      # mod: {DecoderRing.Application, []}
+      mod: {DecoderRing.Application, []}
     ]
   end
 

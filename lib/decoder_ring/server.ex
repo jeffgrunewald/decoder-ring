@@ -39,8 +39,8 @@ defmodule DecoderRing.Server do
       :sys.get_status(@self)
       |> elem(3)
       |> Enum.at(4)
-      |> Enum.at(2)
-      |> elem(1)
+      |> Map.new
+      |> Map.get(:data)
 
     status_message
   end

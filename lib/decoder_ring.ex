@@ -12,10 +12,10 @@ defmodule DecoderRing do
   @spec set_shift(integer()) :: :ok
   defdelegate set_shift(shift), to: DecoderRing.Server, as: :set_shift
 
-  @spec encode(String.t) :: {:ok, String.t} | {atom(), atom()}
+  @spec encode(String.t()) :: {:ok, String.t()} | {atom(), atom()}
   defdelegate encode(message), to: DecoderRing.Server, as: :encode
 
-  @spec decode(String.t) :: {:ok, String.t}
+  @spec decode(String.t()) :: {:ok, String.t()}
   defdelegate decode(message), to: DecoderRing.Server, as: :decode
 
   @spec status() :: tuple()

@@ -8,7 +8,7 @@ defmodule DecoderRing.KeyStore do
     GenServer.start_link(@self, initial_key, name: @self)
   end
 
-  def get(), do: GenServer.call(@self, { :get })
+  def get(), do: GenServer.call(@self, {:get})
 
   def store(new_key), do: GenServer.cast(@self, {:store, new_key})
 

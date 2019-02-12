@@ -34,7 +34,16 @@ defmodule DecoderRing.Server do
 
   def decode(message), do: GenServer.call(@self, {:decode, message})
 
-  def status(), do: :sys.get_status(@self)
+  def status() do
+    [{_, status_message} | _] =
+      :sys.get_status(@self)
+      |> elem(3)
+      |> Enum.at(4)
+      |> Enum.at(2)
+      |> elem(1)
+
+    status_message
+  end
 
   # Server Implementation
   def init(_) do
@@ -60,6 +69,6 @@ defmodule DecoderRing.Server do
   end
 
   def format_status(_reason, [_pdict, state]) do
-    [data: [{'State', "Current shift is #{inspect state}"}]]
+    [data: [{'State', "Current shift is: #{inspect(state)}"}]]
   end
 end

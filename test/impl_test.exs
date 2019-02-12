@@ -17,9 +17,11 @@ defmodule DecoderRing.ImplTest do
   end
 
   test "greets the illustrious inspiration for the rotn library" do
-    actual = capture_io(fn ->
-      DecoderRing.Impl.greeting()
-    end)
+    actual =
+      capture_io(fn ->
+        DecoderRing.Impl.greeting()
+      end)
+
     expected = "GFY, Johnson!"
 
     assert actual =~ expected

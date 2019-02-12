@@ -4,7 +4,7 @@ defmodule DecoderRingTest do
   setup do
     Application.ensure_all_started(:decoder_ring)
 
-    on_exit fn -> Application.stop(:decoder_ring) end
+    on_exit(fn -> Application.stop(:decoder_ring) end)
 
     :ok
   end

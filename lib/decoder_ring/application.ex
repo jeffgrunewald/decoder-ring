@@ -5,10 +5,11 @@ defmodule DecoderRing.Application do
 
   def start(_type, _args) do
     children = [
-      {DecoderRing.Server, 13}
+      {DecoderRing.KeyStore, 13},
+      {DecoderRing.Server, nil}
     ]
 
-    opts = [strategy: :one_for_one, name: DecoderRing.Supervisor]
+    opts = [strategy: :rest_for_one, name: DecoderRing.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

@@ -19,7 +19,7 @@ defmodule DecoderRing.Server do
   @self __MODULE__
 
   # API
-  def start_link(shift), do: GenServer.start_link(@self, shift, name: @self)
+  def start_link(_), do: GenServer.start_link(@self, nil, name: @self)
 
   def set_shift(shift), do: GenServer.cast(@self, {:set_shift, shift})
 
@@ -37,8 +37,8 @@ defmodule DecoderRing.Server do
   def status(), do: :sys.get_status(@self)
 
   # Server Implementation
-  def init(initial_shift) do
-    {:ok, initial_shift}
+  def init(_) do
+    {:ok, DecoderRing.KeyStore.get()}
   end
 
   def handle_call({:encode, message}, _from, shift) do
@@ -50,6 +50,7 @@ defmodule DecoderRing.Server do
   end
 
   def handle_cast({:set_shift, new_shift}, _current_shift) do
+    DecoderRing.KeyStore.store(new_shift)
     {:noreply, new_shift}
   end
 

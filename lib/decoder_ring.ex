@@ -9,9 +9,6 @@ defmodule DecoderRing do
   the server module DecoderRing.Server
   """
 
-  @spec start(integer()) :: {:ok, pid()}
-  defdelegate start(shift \\ 13), to: DecoderRing.Server, as: :start_link
-
   @spec set_shift(integer()) :: :ok
   defdelegate set_shift(shift), to: DecoderRing.Server, as: :set_shift
 

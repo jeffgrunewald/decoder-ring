@@ -1,0 +1,3 @@
+%{
+  "rotn": {:hex, :rotn, "0.2.0", "1f86a2e4f04134a92510e7cecdddfac1a19c46432686efa73460a967f3877a5d", [:mix], [], "hexpm"},
+}
